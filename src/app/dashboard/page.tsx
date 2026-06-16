@@ -14,7 +14,17 @@ import { Badge } from '@/components/ui/badge';
 import { PageHeader } from '@/components/common/page-header';
 import { MetricCard } from '@/components/common/metric-card';
 
-const DASHBOARD_STATS = [
+type BadgeVariant = 'link' | 'default' | 'outline' | 'secondary' | 'ghost' | 'destructive' | 'success';
+
+interface DashboardStat {
+  title: string;
+  value: string;
+  description: string;
+  icon: typeof Users;
+  badge: { label: string; variant: BadgeVariant };
+}
+
+const DASHBOARD_STATS: DashboardStat[] = [
   {
     title: 'Total Leads',
     value: '248',
