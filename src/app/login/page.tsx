@@ -166,7 +166,7 @@ export default function LoginPage() {
 
               {/* Info Text */}
               <p className="text-xs text-slate-500 text-center mt-4">
-                We'll send you a verification code to confirm your identity
+                We will send you a verification code to confirm your identity
               </p>
             </form>
           </CardContent>

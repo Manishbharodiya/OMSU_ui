@@ -206,8 +206,8 @@ export default function VerifyOTPPage() {
             {/* Resend Section */}
             <div className="mt-6 pt-6 border-t border-slate-200 space-y-3">
               <p className="text-xs text-slate-500 text-center">
-                Didn't receive the code?
-              </p>
+                  Did not receive the code?
+                </p>
 
               {canResend ? (
                 <Button

@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { PageHeader } from '@/components/common/page-header';
+/* eslint-disable jsx-a11y/alt-text */
 
 const defaultReviewData = {
   consumerName: 'Sunita Devi',
@@ -51,7 +52,7 @@ const defaultReviewData = {
 };
 
 export default function LeadReviewPage() {
-  const [reviewData, setReviewData] = useState(defaultReviewData as any);
+  const [reviewData, setReviewData] = useState(defaultReviewData);
 
   useEffect(() => {
     try {
@@ -59,9 +60,9 @@ export default function LeadReviewPage() {
       if (s) {
         const parsed = JSON.parse(s);
         // merge with defaults
-        setReviewData((prev: any) => ({ ...prev, ...parsed }));
+        setReviewData((prev) => ({ ...prev, ...parsed }));
       }
-    } catch (err) {
+    } catch {
       // ignore
     }
   }, []);
@@ -236,7 +237,7 @@ export default function LeadReviewPage() {
         <Card className="shadow-sm border-slate-200">
           <CardHeader>
             <CardTitle className="text-base font-semibold text-slate-900 flex items-center gap-2">
-              <Image className="h-5 w-5 text-blue-600" />
+              <Image className="h-5 w-5 text-blue-600" aria-hidden="true" />
               360° Images
             </CardTitle>
             <CardDescription className="text-sm text-slate-500">Uploaded 360-degree panoramic images of the site.</CardDescription>
@@ -244,11 +245,11 @@ export default function LeadReviewPage() {
           <CardContent className="space-y-3">
             {reviewData.images360.length > 0 ? (
               <div className="space-y-2">
-                {(reviewData.images360 || []).map((image: any) => (
+                {(reviewData.images360 || []).map((image: { id?: number; name: string; size?: string }) => (
                   <div key={image.id} className="rounded-lg bg-slate-50 p-3 flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="h-10 w-10 rounded bg-blue-100 flex items-center justify-center">
-                        <Image className="h-5 w-5 text-blue-600" />
+                        <Image className="h-5 w-5 text-blue-600" aria-hidden="true" />
                       </div>
                       <div>
                         <p className="text-sm font-medium text-slate-900">{image.name}</p>
@@ -261,7 +262,7 @@ export default function LeadReviewPage() {
               </div>
             ) : (
               <div className="rounded-lg bg-slate-50 p-8 text-center">
-                <Image className="h-8 w-8 text-slate-400 mx-auto mb-2" />
+                <Image className="h-8 w-8 text-slate-400 mx-auto mb-2" aria-hidden="true" />
                 <p className="text-sm text-slate-500">No 360° images uploaded</p>
               </div>
             )}
@@ -271,7 +272,7 @@ export default function LeadReviewPage() {
         <Card className="shadow-sm border-slate-200">
           <CardHeader>
             <CardTitle className="text-base font-semibold text-slate-900 flex items-center gap-2">
-              <Video className="h-5 w-5 text-red-600" />
+              <Video className="h-5 w-5 text-red-600" aria-hidden="true" />
               Videos
             </CardTitle>
             <CardDescription className="text-sm text-slate-500">Uploaded video documentation of the site.</CardDescription>
@@ -279,11 +280,11 @@ export default function LeadReviewPage() {
           <CardContent className="space-y-3">
             {reviewData.videos.length > 0 ? (
               <div className="space-y-2">
-                {(reviewData.videos || []).map((video: any) => (
+                {(reviewData.videos || []).map((video: { id?: number; name: string; duration?: string; size?: string }) => (
                   <div key={video.id} className="rounded-lg bg-slate-50 p-3 flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="h-10 w-10 rounded bg-red-100 flex items-center justify-center">
-                        <Video className="h-5 w-5 text-red-600" />
+                        <Video className="h-5 w-5 text-red-600" aria-hidden="true" />
                       </div>
                       <div>
                         <p className="text-sm font-medium text-slate-900">{video.name}</p>
@@ -296,7 +297,7 @@ export default function LeadReviewPage() {
               </div>
             ) : (
               <div className="rounded-lg bg-slate-50 p-8 text-center">
-                <Video className="h-8 w-8 text-slate-400 mx-auto mb-2" />
+                <Video className="h-8 w-8 text-slate-400 mx-auto mb-2" aria-hidden="true" />
                 <p className="text-sm text-slate-500">No videos uploaded</p>
               </div>
             )}
